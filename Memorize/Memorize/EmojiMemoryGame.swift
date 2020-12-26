@@ -37,7 +37,7 @@ class EmojiMemoryGame: ObservableObject {
       styling = (name, color)
     case .unspecified:
       let basicEmojis = [
-        "❤️", "🥊", "🏀", "💰", "🍆", "🚀", "😎", "✌🏽", "🇺🇸", "👀", "🦉", "🏈"
+        "❤️", "🥊", "🏀", "💰", "🍆", "🚀", "😎", "✌🏽", "🇺🇸", "👀", "🦉", "🏈",
       ].shuffled()
       let pairsCount = Int.random(in: 2 ... 5)
       model = MemoryGame<String>(numberOfPairsOfCards: pairsCount) { pairIndex in

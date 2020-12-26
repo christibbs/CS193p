@@ -21,6 +21,11 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
   }
 
+  let scoreIncrementForMatch = 2
+  let scoreDecrementForSeenCard = 1
+
+  private var seenCardIds = Set<Int>()
+
   mutating func choose(card: Card) {
     print("card tapped: \(card)")
     if let chosenIndex = cards.firstIndex(matching: card),
@@ -30,7 +35,14 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         if cards[chosenIndex].content == cards[potentialMatchIndex].content {
           cards[chosenIndex].isMatched = true
           cards[potentialMatchIndex].isMatched = true
-          score += 2
+          score += scoreIncrementForMatch
+        } else {
+          if seenCardIds.contains(cards[chosenIndex].id) ||
+            seenCardIds.contains(cards[potentialMatchIndex].id) {
+            score -= scoreDecrementForSeenCard
+          }
+          seenCardIds.insert(cards[chosenIndex].id)
+          seenCardIds.insert(cards[potentialMatchIndex].id)
         }
         cards[chosenIndex].isFaceUp = true
       } else {
