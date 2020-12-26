@@ -17,7 +17,7 @@ class EmojiMemoryGame: ObservableObject {
   let themes: [Theme] = [
     .specified("Sports", ["⚽️", "🏀", "🏈", "⚾️", "🥎", "🎾", "🏐", "🏉", "🎱", "🪀"], 5, .blue),
     .specified("Food", ["🍏", "🥐", "🌽", "🥥", "🍊", "🍇", "🧇", "🥕", "🍔", "🍒"], 6, .yellow),
-    .specified("Presidents", ["🍊", "🍒", "👴🏻", "👨🏾‍🦱"], 4, .green),
+    .specified("Presidents", ["🍊", "🍒", "👴🏻", "👨🏾‍🦱"], 4, Color(UIColor.darkGray)),
     .specified("Animals", ["🐱", "🐰", "🦉", "🐻", "🐣", "🐒", "🐷", "🐋", "🐗", "🦍"], 4, .red),
     .specified("Philly", ["🚃", "🦅", "🗑", "🔔", "💉", "↗️", "🥊"], 6, .green),
     .specified("Families", ["👨‍👩‍👦", "👩‍👧‍👧", "👨‍👨‍👦‍👦", "👩‍👩‍👦‍👦", "👨‍👧‍👦"], 5, .purple),
@@ -27,7 +27,29 @@ class EmojiMemoryGame: ObservableObject {
   @Published private var model: MemoryGame<String>
 
   init() {
-    let theme = themes[Int.random(in: 0..<themes.count)]
+    let theme = themes[Int.random(in: 0 ..< themes.count)]
+
+    switch theme {
+    case let .specified(name, emojis, pairsCount, color):
+      model = MemoryGame<String>(numberOfPairsOfCards: pairsCount) { pairIndex in
+        emojis.shuffled()[pairIndex]
+      }
+      styling = (name, color)
+    case .unspecified:
+      let basicEmojis = [
+        "❤️", "🥊", "🏀", "💰", "🍆", "🚀", "😎", "✌🏽", "🇺🇸", "👀", "🦉", "🏈",
+      ].shuffled()
+
+      let pairsCount = Int.random(in: 2 ... 5)
+      model = MemoryGame<String>(numberOfPairsOfCards: pairsCount) { pairIndex in
+        basicEmojis[pairIndex]
+      }
+      styling = ("Potpourri", .gray)
+    }
+  }
+
+  func reset() {
+    let theme = themes[Int.random(in: 0 ..< themes.count)]
 
     switch theme {
     case let .specified(name, emojis, pairsCount, color):
