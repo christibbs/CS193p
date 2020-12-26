@@ -27,7 +27,7 @@ class EmojiMemoryGame: ObservableObject {
   @Published private var model: MemoryGame<String>
 
   init() {
-    let theme = themes[Int.random(in: 1 ... themes.count)]
+    let theme = themes[Int.random(in: 0..<themes.count)]
 
     switch theme {
     case let .specified(name, emojis, pairsCount, color):
