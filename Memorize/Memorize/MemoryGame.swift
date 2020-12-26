@@ -33,10 +33,12 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
       !cards[chosenIndex].isMatched {
       if let potentialMatchIndex = indexOfFaceUpCard {
         if cards[chosenIndex].content == cards[potentialMatchIndex].content {
+          // Match.
           cards[chosenIndex].isMatched = true
           cards[potentialMatchIndex].isMatched = true
           score += scoreIncrementForMatch
         } else {
+          // Mismatch.
           if seenCardIds.contains(cards[chosenIndex].id) ||
             seenCardIds.contains(cards[potentialMatchIndex].id) {
             score -= scoreDecrementForSeenCard
