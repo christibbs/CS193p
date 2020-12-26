@@ -15,12 +15,12 @@ class EmojiMemoryGame: ObservableObject {
   }
 
   let themes: [Theme] = [
-    .specified("Sports", ["⚽️", "🏀", "🏈", "⚾️", "🥎", "🎾", "🏐", "🏉", "🎱", "🪀"], 5, .blue),
-    .specified("Food", ["🍏", "🥐", "🌽", "🥥", "🍊", "🍇", "🧇", "🥕", "🍔", "🍒"], 6, .yellow),
-    .specified("Presidents", ["🍊", "🍒", "👴🏻", "👨🏾‍🦱"], 4, Color(UIColor.darkGray)),
-    .specified("Animals", ["🐱", "🐰", "🦉", "🐻", "🐣", "🐒", "🐷", "🐋", "🐗", "🦍"], 4, .red),
-    .specified("Philly", ["🚃", "🦅", "🗑", "🔔", "💉", "↗️", "🥊"], 6, .green),
-    .specified("Families", ["👨‍👩‍👦", "👩‍👧‍👧", "👨‍👨‍👦‍👦", "👩‍👩‍👦‍👦", "👨‍👧‍👦"], 5, .purple),
+    .specified("Sports", ["⚽️", "🏀", "🏈", "⚾️", "🥎", "🎾", "🏐", "🏉", "🎱", "🪀"].shuffled(), 5, .blue),
+    .specified("Food", ["🍏", "🥐", "🌽", "🥥", "🍊", "🍇", "🧇", "🥕", "🍔", "🍒"].shuffled(), 6, .yellow),
+    .specified("Presidents", ["🍊", "🍒", "👴🏻", "👨🏾‍🦱"].shuffled(), 4, Color(UIColor.darkGray)),
+    .specified("Animals", ["🐱", "🐰", "🦉", "🐻", "🐣", "🐒", "🐷", "🐋", "🐗", "🦍"].shuffled(), 4, .red),
+    .specified("Philly", ["🚃", "🦅", "🗑", "🔔", "💉", "↗️", "🥊"].shuffled(), 6, .green),
+    .specified("Families", ["👨‍👩‍👦", "👩‍👧‍👧", "👨‍👨‍👦‍👦", "👩‍👩‍👦‍👦", "👨‍👧‍👦"].shuffled(), 5, .purple),
     .unspecified,
   ]
 
@@ -32,14 +32,13 @@ class EmojiMemoryGame: ObservableObject {
     switch theme {
     case let .specified(name, emojis, pairsCount, color):
       model = MemoryGame<String>(numberOfPairsOfCards: pairsCount) { pairIndex in
-        emojis.shuffled()[pairIndex]
+        emojis[pairIndex]
       }
       styling = (name, color)
     case .unspecified:
       let basicEmojis = [
-        "❤️", "🥊", "🏀", "💰", "🍆", "🚀", "😎", "✌🏽", "🇺🇸", "👀", "🦉", "🏈",
+        "❤️", "🥊", "🏀", "💰", "🍆", "🚀", "😎", "✌🏽", "🇺🇸", "👀", "🦉", "🏈"
       ].shuffled()
-
       let pairsCount = Int.random(in: 2 ... 5)
       model = MemoryGame<String>(numberOfPairsOfCards: pairsCount) { pairIndex in
         basicEmojis[pairIndex]
@@ -54,7 +53,7 @@ class EmojiMemoryGame: ObservableObject {
     switch theme {
     case let .specified(name, emojis, pairsCount, color):
       model = MemoryGame<String>(numberOfPairsOfCards: pairsCount) { pairIndex in
-        emojis.shuffled()[pairIndex]
+        emojis[pairIndex]
       }
       styling = (name, color)
     case .unspecified:
