@@ -54,7 +54,7 @@ struct CardView: View {
   let aspectRatio = CGSize(width: 2, height: 3)
 
   func fontSize(for size: CGSize) -> CGFloat {
-    min(size.width, size.height) * 0.75
+    min(size.width, size.height) * 0.6
   }
 }
 
