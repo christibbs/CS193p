@@ -8,18 +8,47 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-  @Published private var model: MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
+  enum Theme {
+    // Name, emoji set, amount of pairs, and theme color.
+    case specified(String, [String], Int, Color)
+    case unspecified
+  }
 
-  static func createMemoryGame() -> MemoryGame<String> {
-    let emojis = [
-      "❤️", "🥊", "🏀", "💰", "🍆", "🚀", "😎", "✌🏽", "🇺🇸", "👀", "🦉", "🏈",
-    ].shuffled()
+  let themes: [Theme] = [
+    .specified("Sports", ["⚽️", "🏀", "🏈", "⚾️", "🥎", "🎾", "🏐", "🏉", "🎱", "🪀"], 5, .blue),
+    .specified("Food", ["🍏", "🥐", "🌽", "🥥", "🍊", "🍇", "🧇", "🥕", "🍔", "🍒"], 6, .yellow),
+    .specified("Presidents", ["🍊", "🍒", "👴🏻", "👨🏾‍🦱"], 4, .green),
+    .specified("Animals", ["🐱", "🐰", "🦉", "🐻", "🐣", "🐒", "🐷", "🐋", "🐗", "🦍"], 4, .red),
+    .specified("Philly", ["🚃", "🦅", "🗑", "🔔", "💉", "↗️", "🥊"], 6, .green),
+    .specified("Families", ["👨‍👩‍👦", "👩‍👧‍👧", "👨‍👨‍👦‍👦", "👩‍👩‍👦‍👦", "👨‍👧‍👦"], 5, .purple),
+    .unspecified,
+  ]
 
-    let pairsCount = Int.random(in: 2 ... 5)
-    return MemoryGame<String>(numberOfPairsOfCards: pairsCount) { pairIndex in
-      emojis[pairIndex]
+  @Published private var model: MemoryGame<String>
+
+  init() {
+    let theme = themes[Int.random(in: 1 ... themes.count)]
+
+    switch theme {
+    case let .specified(name, emojis, pairsCount, color):
+      model = MemoryGame<String>(numberOfPairsOfCards: pairsCount) { pairIndex in
+        emojis.shuffled()[pairIndex]
+      }
+      styling = (name, color)
+    case .unspecified:
+      let basicEmojis = [
+        "❤️", "🥊", "🏀", "💰", "🍆", "🚀", "😎", "✌🏽", "🇺🇸", "👀", "🦉", "🏈",
+      ].shuffled()
+
+      let pairsCount = Int.random(in: 2 ... 5)
+      model = MemoryGame<String>(numberOfPairsOfCards: pairsCount) { pairIndex in
+        basicEmojis[pairIndex]
+      }
+      styling = ("Potpourri", .gray)
     }
   }
+
+  var styling: (name: String, color: Color)
 
   // MARK: - Access to the Model
 
