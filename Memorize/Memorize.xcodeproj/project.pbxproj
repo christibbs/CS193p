@@ -65,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				252AB95D258AAC77000342B6 /* Array+Identifiable.swift */,
+				25FD9FE02595357E0023D53A /* Array+Only.swift */,
 				250E7E91256ECA6300ABF14E /* EmojiMemoryGameView.swift */,
 				ECC508262576EA0A00D24C65 /* EmojiMemoryGame.swift */,
 				252AB956258AA21D000342B6 /* Grid.swift */,
@@ -74,7 +75,6 @@
 				250E7E93256ECA6500ABF14E /* Assets.xcassets */,
 				250E7E98256ECA6500ABF14E /* Info.plist */,
 				250E7E95256ECA6500ABF14E /* Preview Content */,
-				25FD9FE02595357E0023D53A /* Array+Only.swift */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
