@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		257D799425B678A80057429B /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D799325B678A80057429B /* Array+Identifiable.swift */; };
+		257D799D25B67BDD0057429B /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257D799325B678A80057429B /* Array+Identifiable.swift */; };
 		EC7A152325B211CB007E4AB2 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A152225B211CB007E4AB2 /* Tests_iOS.swift */; };
 		EC7A152E25B211CB007E4AB2 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A152D25B211CB007E4AB2 /* Tests_macOS.swift */; };
 		EC7A153025B211CB007E4AB2 /* Solo_SetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A150725B211BF007E4AB2 /* Solo_SetApp.swift */; };
@@ -37,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		257D799325B678A80057429B /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 		EC7A150725B211BF007E4AB2 /* Solo_SetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solo_SetApp.swift; sourceTree = "<group>"; };
 		EC7A150825B211BF007E4AB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EC7A150925B211CB007E4AB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		257D799225B6784F0057429B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				257D799325B678A80057429B /* Array+Identifiable.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		EC7A150125B211BE007E4AB2 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +112,7 @@
 		EC7A150625B211BF007E4AB2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				257D799225B6784F0057429B /* Utility */,
 				EC7A154825B54E69007E4AB2 /* Model */,
 				EC7A150725B211BF007E4AB2 /* Solo_SetApp.swift */,
 				EC7A150825B211BF007E4AB2 /* ContentView.swift */,
@@ -321,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC7A153225B211CB007E4AB2 /* ContentView.swift in Sources */,
+				257D799425B678A80057429B /* Array+Identifiable.swift in Sources */,
 				EC7A154A25B54EDE007E4AB2 /* SetGame.swift in Sources */,
 				EC7A153025B211CB007E4AB2 /* Solo_SetApp.swift in Sources */,
 			);
@@ -331,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC7A153325B211CB007E4AB2 /* ContentView.swift in Sources */,
+				257D799D25B67BDD0057429B /* Array+Identifiable.swift in Sources */,
 				EC7A154B25B54EDE007E4AB2 /* SetGame.swift in Sources */,
 				EC7A153125B211CB007E4AB2 /* Solo_SetApp.swift in Sources */,
 			);
