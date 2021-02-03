@@ -110,7 +110,7 @@ struct SetGame {
     
   }
   
-  mutating func select(card: Card) {
+  mutating func select(_ card: Card) {
     guard let indexOfChosenCard = cards.firstIndex(matching: card) else {
       assertionFailure("Card \(card) chosen, but this card doesn't exist.")
       return
